@@ -1,6 +1,7 @@
-# txt_analyzator
-V tomto projektu bude tvým cílem vytvořit textový analyzátor - program, který se bude umět prokousat libovolně dlouhým textem a zjistit o něm různé informace.
+projekt_1.py: první projekt do Engeto Online Python Akademie
 
-test
+author: Katerina Bartuskova
+email: kati.bartuskova@gmail.com
+discord: bartuskovak
 
-test2
+
