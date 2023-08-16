@@ -3,13 +3,16 @@
 # author: Katerina Bartuskova
 # email: kati.bartuskova@gmail.com
 # discord: bartuskovak
+import re
+
 users = {"bob":"123", "ann":"pass123", "mike":"password123", "liz":"pass123"}
 username = input("username:")
 password = input("password:")
-print("-"*30)
+print("-"*40)
 if username in users and users[username]==password:
     print("Welcome to the app", username)
     print("We have 3 texts to be analyzed.")
+    print("-"*40)
 else:
     print("unregistred user, terminating the program..")
     exit()
@@ -40,6 +43,47 @@ other freshwater genera and herring similar to those
 in modern oceans. Other fish such as paddlefish,
 garpike and stingray are also present.""" 
 }
-text = int(input("Enter a number btw. 1 and 3 to select:"))
-if text in TEXTS.keys():
-    print(TEXTS[text])
+text_index = int(input("Enter a number btw. 1 and 3 to select:"))
+print("-"*40)
+if not text_index in TEXTS.keys():
+    print("invalid data")
+    exit
+text_wo_commas=TEXTS[text_index].replace(",","")
+words=re.split("\s+",text_wo_commas)
+print("There are", len(words), "words in the selected text.")
+titlecase = 0
+uppercase = 0
+lowercase = 0
+numeric = 0
+sum = 0
+for word in words:
+    if word.istitle():
+        titlecase+=1
+    elif word.isupper():
+        uppercase+=1
+    elif word.islower():
+        lowercase+=1
+    elif word.isnumeric():
+        numeric+=1
+        sum += int(word)
+print("There are", titlecase, "titlecase words.")
+print("There are", uppercase, "uppercase words.")
+print("There are", lowercase, "lowercase words.")
+print("There are", numeric, "numeric strings.")
+print("The sum of all numbers",sum)
+print("-"*40)
+print("LEN|  OCCURENCES  |NR.")
+print("-"*40)
+letter_counter=dict()
+for word in words:
+    n=len(word)
+    if n in letter_counter:
+        letter_counter[n]+=1
+    else:
+        letter_counter[n]=1
+sorted_lc = dict(sorted(letter_counter.items()))
+max = 0
+if sorted_lc[key]>max:
+    max = sorted_lc[key]
+for key in sorted_lc:
+    print(key,"|", "*"*sorted_lc[key], "|", sorted_lc[key])
