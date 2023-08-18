@@ -3,6 +3,7 @@
 # author: Katerina Bartuskova
 # email: kati.bartuskova@gmail.com
 # discord: bartuskovak
+
 import re
 
 users = {"bob":"123", "ann":"pass123", "mike":"password123", "liz":"pass123"}
@@ -10,7 +11,7 @@ username = input("username:")
 password = input("password:")
 print("-"*40)
 if username in users and users[username]==password:
-    print("Welcome to the app", username)
+    print("Welcome to the app,", username)
     print("We have 3 texts to be analyzed.")
     print("-"*40)
 else:
@@ -43,7 +44,7 @@ other freshwater genera and herring similar to those
 in modern oceans. Other fish such as paddlefish,
 garpike and stingray are also present.""" 
 }
-text_index = int(input("Enter a number btw. 1 and 3 to select:"))
+text_index = int(input("Enter a number btw. 1 and 3 to select: "))
 print("-"*40)
 if not text_index in TEXTS.keys():
     print("invalid data")
@@ -70,9 +71,7 @@ print("There are", titlecase, "titlecase words.")
 print("There are", uppercase, "uppercase words.")
 print("There are", lowercase, "lowercase words.")
 print("There are", numeric, "numeric strings.")
-print("The sum of all numbers",sum)
-print("-"*40)
-print("LEN|  OCCURENCES  |NR.")
+print("The sum of all the numbers",sum)
 print("-"*40)
 letter_counter=dict()
 for word in words:
@@ -82,8 +81,8 @@ for word in words:
     else:
         letter_counter[n]=1
 sorted_lc = dict(sorted(letter_counter.items()))
-max = 0
-if sorted_lc[key]>max:
-    max = sorted_lc[key]
+print("LEN|  OCCURENCES  |NR.")
+print("-"*40)
 for key in sorted_lc:
-    print(key,"|", "*"*sorted_lc[key], "|", sorted_lc[key])
+    bar = "*"*sorted_lc[key]
+    print(f"{key:>3}|{bar:<14}|{sorted_lc[key]}")
