@@ -48,7 +48,7 @@ text_index = int(input("Enter a number btw. 1 and 3 to select: "))
 print("-"*40)
 if not text_index in TEXTS.keys():
     print("invalid data")
-    exit
+    exit()
 text_wo_commas=TEXTS[text_index].replace(",","")
 words=re.split("\s+",text_wo_commas)
 print("There are", len(words), "words in the selected text.")
@@ -57,29 +57,30 @@ uppercase = 0
 lowercase = 0
 numeric = 0
 sum = 0
+letter_counter=dict()
 for word in words:
     if word.istitle():
         titlecase+=1
-    elif word.isupper():
+    if word.isupper():
         uppercase+=1
-    elif word.islower():
+    if word.islower():
         lowercase+=1
-    elif word.isnumeric():
+    if word.isnumeric():
         numeric+=1
         sum += int(word)
+    n=len(word)
+    if "." in word:
+        n-=1
+    if n in letter_counter:
+        letter_counter[n]+=1
+    else:
+        letter_counter[n]=1
 print("There are", titlecase, "titlecase words.")
 print("There are", uppercase, "uppercase words.")
 print("There are", lowercase, "lowercase words.")
 print("There are", numeric, "numeric strings.")
 print("The sum of all the numbers",sum)
 print("-"*40)
-letter_counter=dict()
-for word in words:
-    n=len(word)
-    if n in letter_counter:
-        letter_counter[n]+=1
-    else:
-        letter_counter[n]=1
 sorted_lc = dict(sorted(letter_counter.items()))
 print("LEN|  OCCURENCES  |NR.")
 print("-"*40)
