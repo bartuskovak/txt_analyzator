@@ -61,9 +61,9 @@ letter_counter=dict()
 for word in words:
     if word.istitle():
         titlecase+=1
-    if word.isupper():
+    if word.isupper() and word.isalpha():
         uppercase+=1
-    if word.islower():
+    if word.islower() and word.isalpha():
         lowercase+=1
     if word.isnumeric():
         numeric+=1
